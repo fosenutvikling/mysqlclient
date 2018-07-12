@@ -1,0 +1,6 @@
+{
+  "extends": ["@fosenu/tslint"],
+  "compilerOptions": {
+    "plugins": [{ "name": "tslint-language-service" }]
+  }
+}
