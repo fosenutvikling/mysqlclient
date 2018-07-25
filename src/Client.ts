@@ -1,4 +1,4 @@
-import { createPool, escape, Pool, PoolOptions } from 'mysql2/promise';
+import { createPool, escape, OkPacket, Pool, PoolOptions } from 'mysql2/promise';
 import { QueryHolder } from './QueryHolder';
 import { TransactionHolder } from './TransactionHolder';
 import { Data, Query } from './types';
@@ -49,7 +49,7 @@ export class Client {
         return new QueryHolder(connection);
     }
 
-    public async execute<T extends Query>(sql: string, data?: Data) {
+    public async execute<T extends Query = OkPacket>(sql: string, data?: Data) {
         const query = await this.query();
         const result = await query.execute<T>(sql, data);
         query.release();

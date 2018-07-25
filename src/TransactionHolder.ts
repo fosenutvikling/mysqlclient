@@ -1,4 +1,4 @@
-import { PoolConnection } from 'mysql2/promise';
+import { OkPacket, PoolConnection } from 'mysql2/promise';
 import { QueryHolder } from './QueryHolder';
 import { Data, Query } from './types';
 
@@ -36,7 +36,7 @@ export class TransactionHolder extends QueryHolder {
         this.release();
     }
 
-    public async execute<T extends Query>(sql: string, data?: Data) {
+    public async execute<T extends Query = OkPacket>(sql: string, data?: Data) {
         try {
             if (!this.hasStarted) this.begin();
 
