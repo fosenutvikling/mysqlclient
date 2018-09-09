@@ -1,6 +1,6 @@
 {
   "name": "@fosenu/mysqlclient",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "MYSQL client, wrapper for mysql2",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@types/mysql2": "github:types/mysql2",
-    "@fosenu/prettier": "^0.1.0",
+    "@fosenu/prettier": "^0.1.1",
     "@fosenu/tslint": "^0.1.1",
     "tslint": "^5.10.0",
     "tslint-config-prettier": "^1.13.0",
