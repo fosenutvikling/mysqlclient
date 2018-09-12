@@ -51,9 +51,16 @@ export class Client {
 
     public async execute<T extends Query = OkPacket>(sql: string, data?: Data) {
         const query = await this.query();
-        const result = await query.execute<T>(sql, data);
-        query.release();
 
-        return result;
+        try {
+            const result = await query.execute<T>(sql, data);
+            query.release();
+
+            return result;
+
+        } catch(ex) {
+            query.release();
+            throw ex;
+        }
     }
 }
