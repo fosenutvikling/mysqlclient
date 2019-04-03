@@ -12,7 +12,7 @@
   "author": "Jonas Kirkemyr",
   "license": "MIT",
   "dependencies": {
-    "mysql2": "^1.5.3",
+    "mysql2": "^1.6.5",
     "@types/mysql": "^2.15.5"
   },
   "devDependencies": {
