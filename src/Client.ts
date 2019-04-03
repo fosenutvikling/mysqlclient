@@ -3,9 +3,15 @@ import { QueryHolder } from './QueryHolder';
 import { TransactionHolder } from './TransactionHolder';
 import { Data, Query } from './types';
 
+interface IMySQLField {
+    length: number;
+    type: 'JSON' | 'TINY' | 'CHAR';
+    string: () => string;
+}
+
 export class Client {
     private poolCluster: Pool;
-    private options: PoolOptions;
+    private readonly options: PoolOptions;
 
     public constructor(options: PoolOptions) {
         if (!(options.host && options.user && options.password && options.database))
@@ -13,7 +19,7 @@ export class Client {
                 'All required options `host`, `user`, `password` and `database` not set'
             );
 
-        options.typeCast = (field, next) => {
+        options.typeCast = (field: IMySQLField, next) => {
             if (field.type === 'TINY' && field.length === 1) return field.string() === '1';
             else if (field.type === 'JSON') return JSON.parse(field.string());
 
@@ -34,7 +40,7 @@ export class Client {
     }
 
     public async init() {
-        this.poolCluster = await createPool(this.options);
+        this.poolCluster = createPool(this.options);
     }
 
     public async transaction() {
@@ -57,8 +63,7 @@ export class Client {
             query.release();
 
             return result;
-
-        } catch(ex) {
+        } catch (ex) {
             query.release();
             throw ex;
         }

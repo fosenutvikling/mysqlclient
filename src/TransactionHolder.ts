@@ -38,7 +38,7 @@ export class TransactionHolder extends QueryHolder {
 
     public async execute<T extends Query = OkPacket>(sql: string, data?: Data) {
         try {
-            if (!this.hasStarted) this.begin();
+            if (!this.hasStarted) await this.begin();
 
             const result = await this.executeQuery(sql, data);
 
