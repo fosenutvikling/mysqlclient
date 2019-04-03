@@ -17,10 +17,10 @@
   },
   "devDependencies": {
     "@fosenu/prettier": "^0.1.1",
-    "@fosenu/tslint": "^0.1.1",
+    "@fosenu/tslint": "^0.1.3",
     "@types/mysql2": "github:types/mysql2",
-    "tslint": "^5.10.0",
-    "tslint-config-prettier": "^1.13.0",
+    "tslint": "^5.15.0",
+    "tslint-config-prettier": "^1.18.0",
     "tslint-language-service": "^0.9.9",
     "typescript": "^2.9.2"
   }
